@@ -1,0 +1,4 @@
+import { PayloadHandler } from "@payloadcms/next/handlers";
+import config from "../../../payload/payload.config";
+
+export const { GET, POST, PUT, PATCH, DELETE } = PayloadHandler(config);

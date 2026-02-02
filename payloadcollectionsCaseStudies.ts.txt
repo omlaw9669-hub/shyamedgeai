@@ -1,0 +1,10 @@
+export const CaseStudies = {
+  slug: "case-studies",
+  admin: { useAsTitle: "title" },
+  fields: [
+    { name: "title", type: "text", required: true },
+    { name: "industry", type: "text" },
+    { name: "resultMetric", type: "text" },
+    { name: "summary", type: "textarea" }
+  ]
+} as const;

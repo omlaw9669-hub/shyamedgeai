@@ -1,0 +1,10 @@
+export const PricingPlans = {
+  slug: "pricing-plans",
+  admin: { useAsTitle: "name" },
+  fields: [
+    { name: "name", type: "text", required: true },
+    { name: "description", type: "textarea" },
+    { name: "price", type: "text" },
+    { name: "features", type: "array", fields: [{ name: "item", type: "text" }] }
+  ]
+} as const;

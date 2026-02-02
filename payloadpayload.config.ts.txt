@@ -1,0 +1,42 @@
+import { buildConfig } from "payload";
+import { postgresAdapter } from "@payloadcms/db-postgres";
+
+import { Services } from "./collections/Services";
+import { Testimonials } from "./collections/Testimonials";
+import { PricingPlans } from "./collections/PricingPlans";
+import { TeamMembers } from "./collections/TeamMembers";
+import { CaseStudies } from "./collections/CaseStudies";
+import { Leads } from "./collections/Leads";
+
+import { Home } from "./globals/Home";
+import { SiteSettings } from "./globals/SiteSettings";
+import { Contact } from "./globals/Contact";
+
+export default buildConfig({
+  serverURL: process.env.NEXT_PUBLIC_SITE_URL,
+  secret: process.env.PAYLOAD_SECRET || "dev-secret-change",
+  db: postgresAdapter({
+    pool: { connectionString: process.env.DATABASE_URL }
+  }),
+  admin: {
+    user: "users"
+  },
+  collections: [
+    // Users for auth
+    {
+      slug: "users",
+      auth: true,
+      fields: [
+        { name: "role", type: "select", required: true, defaultValue: "admin",
+          options: ["admin", "editor"] }
+      ]
+    },
+    Services,
+    Testimonials,
+    PricingPlans,
+    TeamMembers,
+    CaseStudies,
+    Leads
+  ],
+  globals: [Home, SiteSettings, Contact]
+});

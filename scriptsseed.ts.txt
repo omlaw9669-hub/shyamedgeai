@@ -1,0 +1,48 @@
+import payload from "payload";
+
+async function run() {
+  await payload.init({
+    secret: process.env.PAYLOAD_SECRET!,
+    local: true
+  });
+
+  // Team
+  const team = [
+    { name: "Ms. Payal Saini", title: "CEO" },
+    { name: "Om Narayan", title: "Co-Founder" },
+    { name: "Vidya Prakash", title: "Managing Director" }
+  ];
+
+  for (const m of team) {
+    await payload.create({ collection: "team-members", data: m });
+  }
+
+  // Pricing
+  const plans = [
+    { name: "Starter", description: "Launch fast with premium UI.", price: "₹ —", features: [{ item: "1 page" }, { item: "Contact form" }] },
+    { name: "Growth", description: "Multi-page + conversion sections.", price: "₹ —", features: [{ item: "Multi-page" }, { item: "SEO basics" }] },
+    { name: "Premium", description: "Full AI Studio + admin content control.", price: "₹ —", features: [{ item: "Admin CMS" }, { item: "Lab page" }] }
+  ];
+
+  for (const p of plans) {
+    await payload.create({ collection: "pricing-plans", data: p });
+  }
+
+  // Home global
+  await payload.updateGlobal({
+    slug: "home",
+    data: {
+      heroTitlePrefix: "We build",
+      tagline: "Design-led Web. AI-powered Growth.",
+      keywords: [{ word: "websites" }, { word: "funnels" }, { word: "brands" }, { word: "AI modules" }]
+    }
+  });
+
+  console.log("✅ Seed complete");
+  process.exit(0);
+}
+
+run().catch((e) => {
+  console.error(e);
+  process.exit(1);
+});

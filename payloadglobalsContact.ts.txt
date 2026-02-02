@@ -1,0 +1,7 @@
+export const Contact = {
+  slug: "contact",
+  fields: [
+    { name: "email", type: "text", defaultValue: "shyamcreations42@gmail.com" },
+    { name: "whatsapp", type: "text", defaultValue: "8708808087" }
+  ]
+} as const;

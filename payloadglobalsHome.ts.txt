@@ -1,0 +1,12 @@
+export const Home = {
+  slug: "home",
+  fields: [
+    { name: "heroTitlePrefix", type: "text", defaultValue: "We build" },
+    { name: "tagline", type: "text", defaultValue: "Design-led Web. AI-powered Growth." },
+    {
+      name: "keywords",
+      type: "array",
+      fields: [{ name: "word", type: "text" }]
+    }
+  ]
+} as const;

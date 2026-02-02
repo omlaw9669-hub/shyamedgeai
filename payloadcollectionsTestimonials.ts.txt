@@ -1,0 +1,10 @@
+export const Testimonials = {
+  slug: "testimonials",
+  admin: { useAsTitle: "name" },
+  fields: [
+    { name: "name", type: "text", required: true },
+    { name: "role", type: "text" },
+    { name: "company", type: "text" },
+    { name: "quote", type: "textarea", required: true }
+  ]
+} as const;

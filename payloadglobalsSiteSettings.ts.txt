@@ -1,0 +1,7 @@
+export const SiteSettings = {
+  slug: "site-settings",
+  fields: [
+    { name: "siteName", type: "text", defaultValue: "ShyamEdge AI" },
+    { name: "domain", type: "text", defaultValue: "shyamedgeai.com" }
+  ]
+} as const;
